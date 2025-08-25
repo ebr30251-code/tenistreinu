@@ -3,9 +3,12 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Input } from "@/components/ui/input";
+import { Minus, Plus } from "lucide-react";
 const ProductGallery = () => {
   const [selectedColor, setSelectedColor] = useState("black");
   const [selectedSize, setSelectedSize] = useState("33");
+  const [quantity, setQuantity] = useState(1);
   const colors = [{
     id: "black",
     name: "Preto",
@@ -59,8 +62,8 @@ const ProductGallery = () => {
       "38": "https://conceitosmart.pay.yampi.com.br/r/GNPGO3PPT5",
       "39": "https://conceitosmart.pay.yampi.com.br/r/5KMKRHKJCE",
       "40": "https://conceitosmart.pay.yampi.com.br/r/JPYG3047DS",
-      "41": "https://conceitosmart.pay.yampi.com.br/r/2C3ING9R1Y",
-      "42": "https://conceitosmart.pay.yampi.com.br/r/3S7J2X8S6T",
+      "41": "https://conceitosmart.pay.yampi.com.br/r/3S7J2X8S6T",
+      "42": "https://conceitosmart.pay.yampi.com.br/r/2C3ING9R1Y",
       "43": "https://conceitosmart.pay.yampi.com.br/r/N1L5DZE3L7"
     }
   }];
@@ -120,6 +123,13 @@ const ProductGallery = () => {
   return <section className="py-20 bg-muted/20">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
+  const incrementQuantity = () => {
+    setQuantity(prev => prev + 1);
+  };
+
+  const decrementQuantity = () => {
+    setQuantity(prev => prev > 1 ? prev - 1 : 1);
+  };
           <Badge variant="secondary" className="mb-4">
             Galeria do Produto
           </Badge>
@@ -214,9 +224,44 @@ const ProductGallery = () => {
               </Select>
             </div>
 
+            {/* Quantity Selection */}
+            <div>
+              <h3 className="text-2xl font-bold mb-4">Quantidade</h3>
+              <div className="flex items-center gap-3">
+                <Button
+                  variant="outline"
+                  size="icon"
+                  onClick={decrementQuantity}
+                  disabled={quantity <= 1}
+                  className="h-12 w-12"
+                >
+                  <Minus className="h-4 w-4" />
+                </Button>
+                <Input
+                  type="number"
+                  value={quantity}
+                  onChange={(e) => {
+                    const value = parseInt(e.target.value);
+                    if (value >= 1) {
+                      setQuantity(value);
+                    }
+                  }}
+                  className="w-20 h-12 text-center"
+                  min="1"
+                />
+                <Button
+                  variant="outline"
+                  size="icon"
+                  onClick={incrementQuantity}
+                  className="h-12 w-12"
+                >
+                  <Plus className="h-4 w-4" />
+                </Button>
+              </div>
+            </div>
             <div className="pt-6">
               <Button size="lg" className="w-full shadow-glow hover:shadow-glow/80" onClick={handleCheckout}>
-                Adicionar ao Carrinho - {selectedProduct?.name} • Tam. {selectedSize}
+                Adicionar ao Carrinho - {selectedProduct?.name} • Tam. {selectedSize} • Qtd. {quantity}
                 <span className="ml-2">→</span>
               </Button>
               <p className="text-sm text-muted-foreground text-center mt-3">

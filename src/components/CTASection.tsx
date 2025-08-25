@@ -4,6 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Input } from "@/components/ui/input";
 import { 
   Star, 
   Truck, 
@@ -12,12 +13,16 @@ import {
   Shield,
   Clock,
   Award,
-  Users
+  Users,
+  ArrowLeft,
+  Minus,
+  Plus
 } from "lucide-react";
 
 const CTASection = () => {
   const [selectedColor, setSelectedColor] = useState("black");
   const [selectedSize, setSelectedSize] = useState("40");
+  const [quantity, setQuantity] = useState(1);
 
   const colors = [
     {
@@ -25,36 +30,93 @@ const CTASection = () => {
       name: "Preto",
       color: "#1a1a1a",
       image: "/lovable-uploads/9d348f68-801a-4c8c-ad9c-533d124ca1b5.png",
-      featured: true
+      featured: true,
+      checkoutLinks: {
+        "33": "https://conceitosmart.pay.yampi.com.br/r/JAYT3P2L64",
+        "34": "https://conceitosmart.pay.yampi.com.br/r/8M9BPUWVKV",
+        "35": "https://conceitosmart.pay.yampi.com.br/r/7QMUC1L4T8",
+        "36": "https://conceitosmart.pay.yampi.com.br/r/3WLYPH7PRR",
+        "37": "https://conceitosmart.pay.yampi.com.br/r/22NYKK7YHC",
+        "38": "https://conceitosmart.pay.yampi.com.br/r/256Q9O8HU3",
+        "39": "https://conceitosmart.pay.yampi.com.br/r/NKZGG413ZN",
+        "40": "https://conceitosmart.pay.yampi.com.br/r/CNR41OHWOC",
+        "41": "https://conceitosmart.pay.yampi.com.br/r/2MOAXIHQ8Z",
+        "42": "https://conceitosmart.pay.yampi.com.br/r/H8GXR6VNPX",
+        "43": "https://conceitosmart.pay.yampi.com.br/r/A3MUIGL732"
+      }
     },
     {
       id: "mint",
       name: "Verde Água",
       color: "#7dd3fc",
       image: "/lovable-uploads/e8608a07-9feb-41e0-a880-4ff2eb0b8d7a.png",
-      featured: false
+      featured: false,
+      checkoutLinks: {
+        "33": "https://conceitosmart.pay.yampi.com.br/r/OO7Y3CDRJ0",
+        "34": "https://conceitosmart.pay.yampi.com.br/r/9F9HWOIFP4",
+        "35": "https://conceitosmart.pay.yampi.com.br/r/LCG1K6LE6J",
+        "36": "https://conceitosmart.pay.yampi.com.br/r/J3NNMTNT65",
+        "37": "https://conceitosmart.pay.yampi.com.br/r/G383YF8631",
+        "38": "https://conceitosmart.pay.yampi.com.br/r/GNPGO3PPT5",
+        "39": "https://conceitosmart.pay.yampi.com.br/r/5KMKRHKJCE",
+        "40": "https://conceitosmart.pay.yampi.com.br/r/JPYG3047DS",
+        "41": "https://conceitosmart.pay.yampi.com.br/r/3S7J2X8S6T",
+        "42": "https://conceitosmart.pay.yampi.com.br/r/2C3ING9R1Y",
+        "43": "https://conceitosmart.pay.yampi.com.br/r/N1L5DZE3L7"
+      }
     },
     {
-      id: "red",
-      name: "Vermelho",
-      color: "#ef4444",
-      image: "/lovable-uploads/7d150c5c-da8c-45f2-82dc-bd21be527a83.png",
-      featured: false
+      id: "beige",
+      name: "Bege",
+      color: "#d4c5a8",
+      image: "/lovable-uploads/f9b78f10-6568-49b1-b46e-a43cd0429145.png",
+      featured: false,
+      checkoutLinks: {
+        "33": "https://conceitosmart.pay.yampi.com.br/r/OO7Y3CDRJ0",
+        "34": "https://conceitosmart.pay.yampi.com.br/r/9F9HWOIFP4",
+        "35": "https://conceitosmart.pay.yampi.com.br/r/LCG1K6LE6J",
+        "36": "https://conceitosmart.pay.yampi.com.br/r/J3NNMTNT65",
+        "37": "https://conceitosmart.pay.yampi.com.br/r/G383YF8631",
+        "38": "https://conceitosmart.pay.yampi.com.br/r/GNPGO3PPT5",
+        "39": "https://conceitosmart.pay.yampi.com.br/r/5KMKRHKJCE",
+        "40": "https://conceitosmart.pay.yampi.com.br/r/JPYG3047DS",
+        "41": "https://conceitosmart.pay.yampi.com.br/r/3S7J2X8S6T",
+        "42": "https://conceitosmart.pay.yampi.com.br/r/2C3ING9R1Y",
+        "43": "https://conceitosmart.pay.yampi.com.br/r/N1L5DZE3L7"
+      }
     }
   ];
 
   const sizes = [
+    { id: "33", name: "33", available: true },
+    { id: "34", name: "34", available: true },
+    { id: "35", name: "35", available: true },
+    { id: "36", name: "36", available: true },
+    { id: "37", name: "37", available: true },
     { id: "38", name: "38", available: true },
     { id: "39", name: "39", available: true },
     { id: "40", name: "40", available: true },
     { id: "41", name: "41", available: true },
     { id: "42", name: "42", available: true },
     { id: "43", name: "43", available: true },
-    { id: "44", name: "44", available: false }
   ];
 
   const selectedProduct = colors.find(color => color.id === selectedColor);
 
+  const handleCheckout = () => {
+    const checkoutUrl = selectedProduct?.checkoutLinks[selectedSize];
+    if (checkoutUrl) {
+      window.location.href = checkoutUrl;
+    }
+  };
+
+  const incrementQuantity = () => {
+    setQuantity(prev => prev + 1);
+  };
+
+  const decrementQuantity = () => {
+    setQuantity(prev => prev > 1 ? prev - 1 : 1);
+  };
   const benefits = [
     {
       icon: Truck,
@@ -166,7 +228,17 @@ const CTASection = () => {
                 </DialogTrigger>
                 <DialogContent className="max-w-md">
                   <DialogHeader>
+                    <div className="flex items-center gap-2 mb-2">
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        onClick={() => document.querySelector('[data-state="open"]')?.click()}
+                        className="p-1 h-auto"
+                      >
+                        <ArrowLeft className="w-4 h-4" />
+                      </Button>
                     <DialogTitle>Personalizar Produto</DialogTitle>
+                    </div>
                   </DialogHeader>
                   
                   <div className="space-y-6">
@@ -245,17 +317,53 @@ const CTASection = () => {
                       </Select>
                     </div>
 
+                    {/* Quantity Selection */}
+                    <div>
+                      <h4 className="font-semibold mb-3">Quantidade:</h4>
+                      <div className="flex items-center gap-3 justify-center">
+                        <Button
+                          variant="outline"
+                          size="icon"
+                          onClick={decrementQuantity}
+                          disabled={quantity <= 1}
+                          className="h-10 w-10"
+                        >
+                          <Minus className="h-4 w-4" />
+                        </Button>
+                        <Input
+                          type="number"
+                          value={quantity}
+                          onChange={(e) => {
+                            const value = parseInt(e.target.value);
+                            if (value >= 1) {
+                              setQuantity(value);
+                            }
+                          }}
+                          className="w-16 h-10 text-center"
+                          min="1"
+                        />
+                        <Button
+                          variant="outline"
+                          size="icon"
+                          onClick={incrementQuantity}
+                          className="h-10 w-10"
+                        >
+                          <Plus className="h-4 w-4" />
+                        </Button>
+                      </div>
+                    </div>
                     {/* Add to Cart Button */}
                     <Button 
                       size="lg" 
                       className="w-full shadow-glow hover:shadow-glow/80"
+                      onClick={handleCheckout}
                     >
                       Adicionar ao Carrinho
                       <span className="ml-2">→</span>
                     </Button>
                     
                     <p className="text-sm text-muted-foreground text-center">
-                      {selectedProduct?.name} • Tamanho {selectedSize}
+                      {selectedProduct?.name} • Tamanho {selectedSize} • Qtd. {quantity}
                     </p>
                   </div>
                 </DialogContent>
