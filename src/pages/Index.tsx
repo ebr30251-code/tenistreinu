@@ -5,12 +5,10 @@ import SpecsSection from "@/components/SpecsSection";
 import SizeGuide from "@/components/SizeGuide";
 import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
-import CheckoutHandler from "@/components/CheckoutHandler";
 
 const Index = () => {
   return (
     <div className="min-h-screen">
-      <CheckoutHandler />
       <HeroSection />
       <FeaturesSection />
       <ProductGallery />

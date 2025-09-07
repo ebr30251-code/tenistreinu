@@ -4,7 +4,6 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { handleCheckout } from "./CheckoutHandler";
 import { 
   Star, 
   Truck, 
@@ -29,16 +28,16 @@ const CTASection = () => {
       featured: true
     },
     {
-      id: "beige",
-      name: "Bege",
-      color: "#d4b896",
+      id: "mint",
+      name: "Verde Água",
+      color: "#7dd3fc",
       image: "/lovable-uploads/e8608a07-9feb-41e0-a880-4ff2eb0b8d7a.png",
       featured: false
     },
     {
-      id: "mint",
-      name: "Verde Água",
-      color: "#7dd3fc",
+      id: "red",
+      name: "Vermelho",
+      color: "#ef4444",
       image: "/lovable-uploads/7d150c5c-da8c-45f2-82dc-bd21be527a83.png",
       featured: false
     }
@@ -90,24 +89,6 @@ const CTASection = () => {
       rating: 5,
       comment: "Uso no trabalho e na academia. Versatilidade incrível e qualidade excelente.",
       author: "Carlos R.",
-      verified: true
-    },
-    {
-      rating: 5,
-      comment: "Comprei para minha esposa e ela amou! Muito confortável para o dia a dia.",
-      author: "Roberto M.",
-      verified: true
-    },
-    {
-      rating: 5,
-      comment: "Produto de qualidade excepcional. Recomendo para todos os meus amigos.",
-      author: "Ana Paula L.",
-      verified: true
-    },
-    {
-      rating: 5,
-      comment: "Finalmente um tênis que não escorrega na academia. Perfeito para treinos intensos!",
-      author: "Lucas F.",
       verified: true
     }
   ];
@@ -268,9 +249,8 @@ const CTASection = () => {
                     <Button 
                       size="lg" 
                       className="w-full shadow-glow hover:shadow-glow/80"
-                      onClick={() => handleCheckout(selectedColor, selectedSize)}
                     >
-                      Comprar Agora
+                      Adicionar ao Carrinho
                       <span className="ml-2">→</span>
                     </Button>
                     
@@ -303,7 +283,7 @@ const CTASection = () => {
             O que nossos clientes dizem
           </h3>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 gap-6">
             {testimonials.map((testimonial, index) => (
               <Card key={index} className="shadow-card border-border/50">
                 <CardContent className="p-6">

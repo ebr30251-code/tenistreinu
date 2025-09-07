@@ -168,17 +168,11 @@ const Footer = () => {
           </p>
           <div className="flex items-center gap-4 text-sm text-muted-foreground">
             <span>Pagamento Seguro</span>
-            <div className="flex gap-2">
-              <div className="w-8 h-5 bg-muted rounded text-xs flex items-center justify-center font-bold">
-                VISA
-              </div>
-              <div className="w-8 h-5 bg-muted rounded text-xs flex items-center justify-center font-bold">
-                MC
-              </div>
-              <div className="w-8 h-5 bg-muted rounded text-xs flex items-center justify-center font-bold">
-                PIX
-              </div>
-            </div>
+            <img 
+              src="/lovable-uploads/04bd0e47-b637-43bd-ba25-9c0cde624989.png" 
+              alt="Formas de pagamento aceitas" 
+              className="h-6 max-w-xs object-contain"
+            />
           </div>
         </div>
       </div>
