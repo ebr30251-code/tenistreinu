@@ -38,7 +38,7 @@ const CTASection = () => {
       id: "beige",
       name: "Bege",
       color: "#d4c5a8",
-      image: "/lovable-uploads/7d150c5c-da8c-45f2-82dc-bd21be527a83.png",
+      image: "/lovable-uploads/f9b78f10-6568-49b1-b46e-a43cd0429145.png",
       featured: false
     }
   ];
