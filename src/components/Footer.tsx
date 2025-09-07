@@ -141,7 +141,7 @@ const Footer = () => {
                 <Phone className="w-4 h-4 text-primary mt-1 flex-shrink-0" />
                 <div>
                   <p className="text-sm font-medium">WhatsApp</p>
-                  <p className="text-sm text-muted-foreground">(11) 99999-9999</p>
+                  <p className="text-sm text-muted-foreground">(11) 2039-0054</p>
                 </div>
               </div>
               

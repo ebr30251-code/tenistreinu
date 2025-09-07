@@ -32,17 +32,17 @@ const ProductGallery = () => {
     image: "/lovable-uploads/e8608a07-9feb-41e0-a880-4ff2eb0b8d7a.png",
     featured: false,
     checkoutLinks: {
-      "33": "https://conceitosmart.pay.yampi.com.br/r/OO7Y3CDRJ0",
-      "34": "https://conceitosmart.pay.yampi.com.br/r/9F9HWOIFP4",
-      "35": "https://conceitosmart.pay.yampi.com.br/r/LCG1K6LE6J",
-      "36": "https://conceitosmart.pay.yampi.com.br/r/J3NNMTNT65",
-      "37": "https://conceitosmart.pay.yampi.com.br/r/G383YF8631",
-      "38": "https://conceitosmart.pay.yampi.com.br/r/GNPGO3PPT5",
-      "39": "https://conceitosmart.pay.yampi.com.br/r/5KMKRHKJCE",
-      "40": "https://conceitosmart.pay.yampi.com.br/r/JPYG3047DS",
-      "41": "https://conceitosmart.pay.yampi.com.br/r/3S7J2X8S6T",
-      "42": "https://conceitosmart.pay.yampi.com.br/r/2C3ING9R1Y",
-      "43": "https://conceitosmart.pay.yampi.com.br/r/N1L5DZE3L7"
+      "33": "https://conceitosmart.pay.yampi.com.br/r/E06101IOBV",
+      "34": "https://conceitosmart.pay.yampi.com.br/r/RFIP4MQEYA",
+      "35": "https://conceitosmart.pay.yampi.com.br/r/KQ164ICXLE",
+      "36": "https://conceitosmart.pay.yampi.com.br/r/FE6A8UPQJC",
+      "37": "https://conceitosmart.pay.yampi.com.br/r/5SJFZ66R3F",
+      "38": "https://conceitosmart.pay.yampi.com.br/r/H7CQCQJPN4",
+      "39": "https://conceitosmart.pay.yampi.com.br/r/LNAV3M6WH1",
+      "40": "https://conceitosmart.pay.yampi.com.br/r/414LNSOHUY",
+      "41": "https://conceitosmart.pay.yampi.com.br/r/QWZ2WYT1SZ",
+      "42": "https://conceitosmart.pay.yampi.com.br/r/TJSS1HMEBM",
+      "43": "https://conceitosmart.pay.yampi.com.br/r/H4AHFLVB1Y"
     }
   }, {
     id: "beige",
@@ -59,8 +59,8 @@ const ProductGallery = () => {
       "38": "https://conceitosmart.pay.yampi.com.br/r/GNPGO3PPT5",
       "39": "https://conceitosmart.pay.yampi.com.br/r/5KMKRHKJCE",
       "40": "https://conceitosmart.pay.yampi.com.br/r/JPYG3047DS",
-      "41": "https://conceitosmart.pay.yampi.com.br/r/2C3ING9R1Y",
-      "42": "https://conceitosmart.pay.yampi.com.br/r/3S7J2X8S6T",
+      "41": "https://conceitosmart.pay.yampi.com.br/r/3S7J2X8S6T",
+      "42": "https://conceitosmart.pay.yampi.com.br/r/2C3ING9R1Y",
       "43": "https://conceitosmart.pay.yampi.com.br/r/N1L5DZE3L7"
     }
   }];
