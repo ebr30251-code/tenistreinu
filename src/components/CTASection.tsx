@@ -25,35 +25,85 @@ const CTASection = () => {
       name: "Preto",
       color: "#1a1a1a",
       image: "/lovable-uploads/9d348f68-801a-4c8c-ad9c-533d124ca1b5.png",
-      featured: true
+      featured: true,
+      checkoutLinks: {
+        "33": "https://conceitosmart.pay.yampi.com.br/r/JAYT3P2L64",
+        "34": "https://conceitosmart.pay.yampi.com.br/r/8M9BPUWVKV",
+        "35": "https://conceitosmart.pay.yampi.com.br/r/7QMUC1L4T8",
+        "36": "https://conceitosmart.pay.yampi.com.br/r/3WLYPH7PRR",
+        "37": "https://conceitosmart.pay.yampi.com.br/r/22NYKK7YHC",
+        "38": "https://conceitosmart.pay.yampi.com.br/r/256Q9O8HU3",
+        "39": "https://conceitosmart.pay.yampi.com.br/r/NKZGG413ZN",
+        "40": "https://conceitosmart.pay.yampi.com.br/r/CNR41OHWOC",
+        "41": "https://conceitosmart.pay.yampi.com.br/r/2MOAXIHQ8Z",
+        "42": "https://conceitosmart.pay.yampi.com.br/r/H8GXR6VNPX",
+        "43": "https://conceitosmart.pay.yampi.com.br/r/A3MUIGL732"
+      }
     },
     {
       id: "mint",
       name: "Verde Água",
       color: "#7dd3fc",
       image: "/lovable-uploads/e8608a07-9feb-41e0-a880-4ff2eb0b8d7a.png",
-      featured: false
+      featured: false,
+      checkoutLinks: {
+        "33": "https://conceitosmart.pay.yampi.com.br/r/E06101IOBV",
+        "34": "https://conceitosmart.pay.yampi.com.br/r/RFIP4MQEYA",
+        "35": "https://conceitosmart.pay.yampi.com.br/r/KQ164ICXLE",
+        "36": "https://conceitosmart.pay.yampi.com.br/r/FE6A8UPQJC",
+        "37": "https://conceitosmart.pay.yampi.com.br/r/5SJFZ66R3F",
+        "38": "https://conceitosmart.pay.yampi.com.br/r/H7CQCQJPN4",
+        "39": "https://conceitosmart.pay.yampi.com.br/r/LNAV3M6WH1",
+        "40": "https://conceitosmart.pay.yampi.com.br/r/414LNSOHUY",
+        "41": "https://conceitosmart.pay.yampi.com.br/r/QWZ2WYT1SZ",
+        "42": "https://conceitosmart.pay.yampi.com.br/r/TJSS1HMEBM",
+        "43": "https://conceitosmart.pay.yampi.com.br/r/H4AHFLVB1Y"
+      }
     },
     {
       id: "beige",
       name: "Bege",
       color: "#d4c5a8",
       image: "/lovable-uploads/f9b78f10-6568-49b1-b46e-a43cd0429145.png",
-      featured: false
+      featured: false,
+      checkoutLinks: {
+        "33": "https://conceitosmart.pay.yampi.com.br/r/OO7Y3CDRJ0",
+        "34": "https://conceitosmart.pay.yampi.com.br/r/9F9HWOIFP4",
+        "35": "https://conceitosmart.pay.yampi.com.br/r/LCG1K6LE6J",
+        "36": "https://conceitosmart.pay.yampi.com.br/r/J3NNMTNT65",
+        "37": "https://conceitosmart.pay.yampi.com.br/r/G383YF8631",
+        "38": "https://conceitosmart.pay.yampi.com.br/r/GNPGO3PPT5",
+        "39": "https://conceitosmart.pay.yampi.com.br/r/5KMKRHKJCE",
+        "40": "https://conceitosmart.pay.yampi.com.br/r/JPYG3047DS",
+        "41": "https://conceitosmart.pay.yampi.com.br/r/3S7J2X8S6T",
+        "42": "https://conceitosmart.pay.yampi.com.br/r/2C3ING9R1Y",
+        "43": "https://conceitosmart.pay.yampi.com.br/r/N1L5DZE3L7"
+      }
     }
   ];
 
   const sizes = [
+    { id: "33", name: "33", available: true },
+    { id: "34", name: "34", available: true },
+    { id: "35", name: "35", available: true },
+    { id: "36", name: "36", available: true },
+    { id: "37", name: "37", available: true },
     { id: "38", name: "38", available: true },
     { id: "39", name: "39", available: true },
     { id: "40", name: "40", available: true },
     { id: "41", name: "41", available: true },
     { id: "42", name: "42", available: true },
-    { id: "43", name: "43", available: true },
-    { id: "44", name: "44", available: false }
+    { id: "43", name: "43", available: true }
   ];
 
   const selectedProduct = colors.find(color => color.id === selectedColor);
+
+  const handleCheckout = () => {
+    const checkoutUrl = selectedProduct?.checkoutLinks[selectedSize];
+    if (checkoutUrl) {
+      window.location.href = checkoutUrl;
+    }
+  };
 
   const benefits = [
     {
@@ -249,6 +299,7 @@ const CTASection = () => {
                     <Button 
                       size="lg" 
                       className="w-full shadow-glow hover:shadow-glow/80"
+                     onClick={handleCheckout}
                     >
                       Adicionar ao Carrinho
                       <span className="ml-2">→</span>
