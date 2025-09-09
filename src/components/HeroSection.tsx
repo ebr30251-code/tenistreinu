@@ -60,7 +60,17 @@ const HeroSection = () => {
               <Button 
                 size="lg" 
                 className="shadow-glow hover:shadow-glow/80 transition-all duration-300"
-                onClick={() => document.getElementById('cta-section')?.scrollIntoView({ behavior: 'smooth' })}
+                onClick={() => {
+                  // Rastrear clique no botão principal
+                  if (typeof window !== 'undefined' && (window as any).fbq) {
+                    (window as any).fbq('track', 'Lead', {
+                      content_name: 'Botão Comprar Agora - Hero',
+                      value: 189.90,
+                      currency: 'BRL'
+                    });
+                  }
+                  document.getElementById('cta-section')?.scrollIntoView({ behavior: 'smooth' });
+                }}
               >
                 Comprar Agora
                 <span className="ml-2">→</span>
@@ -68,7 +78,15 @@ const HeroSection = () => {
               <Button 
                 variant="outline" 
                 size="lg"
-                onClick={() => document.getElementById('features-section')?.scrollIntoView({ behavior: 'smooth' })}
+                onClick={() => {
+                  // Rastrear clique no botão de detalhes
+                  if (typeof window !== 'undefined' && (window as any).fbq) {
+                    (window as any).fbq('track', 'ViewContent', {
+                      content_name: 'Botão Ver Detalhes - Hero'
+                    });
+                  }
+                  document.getElementById('features-section')?.scrollIntoView({ behavior: 'smooth' });
+                }}
               >
                 Ver Detalhes
               </Button>

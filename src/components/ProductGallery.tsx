@@ -3,6 +3,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { handleCheckout } from "@/components/CheckoutHandler";
+
 const ProductGallery = () => {
   const [selectedColor, setSelectedColor] = useState("black");
   const [selectedSize, setSelectedSize] = useState("33");
@@ -111,12 +113,25 @@ const ProductGallery = () => {
   }];
   const selectedProduct = colors.find(color => color.id === selectedColor);
   
-  const handleCheckout = () => {
-    const checkoutUrl = selectedProduct?.checkoutLinks[selectedSize];
-    if (checkoutUrl) {
-      window.location.href = checkoutUrl;
+  const handleCheckoutClick = () => {
+    if (selectedProduct) {
+      // Rastrear evento de clique no botão de checkout
+      if (typeof window !== 'undefined' && (window as any).fbq) {
+        (window as any).fbq('track', 'AddToCart', {
+          content_type: 'product',
+          content_ids: [`treinu-${selectedColor}-${selectedSize}`],
+          content_name: `Tênis TREINU ${selectedProduct.name} - Tamanho ${selectedSize}`,
+          content_category: 'Calçados',
+          value: 189.90,
+          currency: 'BRL',
+          num_items: 1
+        });
+      }
+      
+      handleCheckout(selectedColor, selectedSize);
     }
   };
+
   return <section className="py-20 bg-muted/20">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
@@ -215,7 +230,7 @@ const ProductGallery = () => {
             </div>
 
             <div className="pt-6">
-              <Button size="lg" className="w-full shadow-glow hover:shadow-glow/80" onClick={handleCheckout}>
+              <Button size="lg" className="w-full shadow-glow hover:shadow-glow/80" onClick={handleCheckoutClick}>
                 Adicionar ao Carrinho - {selectedProduct?.name} • Tam. {selectedSize}
                 <span className="ml-2">→</span>
               </Button>

@@ -4,6 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { handleCheckout } from "@/components/CheckoutHandler";
 import { 
   Star, 
   Truck, 
@@ -98,10 +99,22 @@ const CTASection = () => {
 
   const selectedProduct = colors.find(color => color.id === selectedColor);
 
-  const handleCheckout = () => {
-    const checkoutUrl = selectedProduct?.checkoutLinks[selectedSize];
-    if (checkoutUrl) {
-      window.location.href = checkoutUrl;
+  const handleCheckoutClick = () => {
+    if (selectedProduct) {
+      // Rastrear evento de clique no botão de checkout
+      if (typeof window !== 'undefined' && (window as any).fbq) {
+        (window as any).fbq('track', 'AddToCart', {
+          content_type: 'product',
+          content_ids: [`treinu-${selectedColor}-${selectedSize}`],
+          content_name: `Tênis TREINU ${selectedProduct.name} - Tamanho ${selectedSize}`,
+          content_category: 'Calçados',
+          value: 189.90,
+          currency: 'BRL',
+          num_items: 1
+        });
+      }
+      
+      handleCheckout(selectedColor, selectedSize);
     }
   };
 
@@ -299,7 +312,7 @@ const CTASection = () => {
                     <Button 
                       size="lg" 
                       className="w-full shadow-glow hover:shadow-glow/80"
-                     onClick={handleCheckout}
+                     onClick={handleCheckoutClick}
                     >
                       Adicionar ao Carrinho
                       <span className="ml-2">→</span>
